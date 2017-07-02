@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 这里映射的. 的路径为test -->
+	<package name="default" namespace="/test" extends="struts-default">
+		<action name="test" class="com.webprojectThrowable.action.WebExceptionTest"
+			method="test">
+			<exception-mapping exception="com.mythrowable.MyException"
+				result="execption" />
+			<result name="execption">/error.jsp</result>
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+</struts>
