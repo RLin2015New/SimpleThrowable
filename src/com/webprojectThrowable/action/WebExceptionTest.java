@@ -19,10 +19,20 @@ public class WebExceptionTest extends BaseAction {
 	private static final long serialVersionUID = 8278523342143021509L;
 
 	public String test() throws MyException {
-		System.out.println("test");
-		MyException e = new MyException(new NullPointerException("aba"));
-		setException(e);
-		throw e;
+
+		try {
+			System.out.println("test");
+			if (Math.random() < 0.5) {
+				throw new NullPointerException("aba");
+			}
+		} catch (Exception e) {
+			MyException mye = new MyException(e);
+			setException(mye);
+			// TODO ´íÎóÐ´ÈÕÖ¾
+			System.out.println(mye.toString());
+			throw mye;
+		}
+		return "success";
 	}
 
 }
